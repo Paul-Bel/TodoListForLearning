@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {useState} from 'react';
+import { v1 } from 'uuid';
 import './App.css';
+import {Todolist} from "./Todolist";
+
+type DataPropsApp = {id: string, title: string, isDone: boolean}
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+    const [tasks, setTitle] = useState([
+        {id: v1(), title: 'React', isDone: false,},
+        {id: v1(), title: 'HTML', isDone: true,},
+        {id: v1(), title: 'CSS', isDone: false,},
+        {id: v1(), title: 'Redax', isDone: false,},
+        {id: v1(), title: 'React stirybook', isDone: false,},
+    ])
+
+
+
+
+    return (
+        <div className="App">
+<Todolist tasks={tasks}/>
+
+        </div>
+    );
 }
 
 export default App;
