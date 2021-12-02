@@ -6,13 +6,14 @@ type DataProps = {
 }
 
 type PropsTodolist = {
-    tasks: Array<DataProps>
+    TasksTodolist: Array<DataProps>
+    setFilter: (info: 'All' | 'Active' | 'Completed') => void
 }
 
 
 export const Todolist = (props: PropsTodolist) => {
 
-    return(
+    return (
         <div>
             <div>
                 <h3>What to learn</h3>
@@ -21,16 +22,16 @@ export const Todolist = (props: PropsTodolist) => {
                     <button>+</button>
                 </div>
                 <ul>
-                    {props.tasks.map(m=>{
+                    {props.TasksTodolist.map(m => {
                         return (
                             <li><input type="checkbox" checked={m.isDone}/> <span>{m.title}</span></li>
                         )
                     })}
                 </ul>
                 <div>
-                    <button>All</button>
-                    <button>Active</button>
-                    <button>Completed</button>
+                    <button onClick={()=>props.setFilter('All')}>All</button>
+                    <button onClick={()=>props.setFilter('Active')}>Active</button>
+                    <button onClick={()=>props.setFilter('Completed')}>Completed</button>
                 </div>
             </div>
 
