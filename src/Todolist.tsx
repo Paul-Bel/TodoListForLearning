@@ -1,67 +1,98 @@
-import React, {ChangeEvent, KeyboardEvent, MouseEvent} from "react";
+import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import {FilterValuesType, TaskType} from "./App";
 
-
-type DataProps = {
-    id: string, title: string, isDone: boolean
+type PropsType = {
+    id: string
+    title: string
+    tasks: Array<TaskType>
+    removeTask: (taskID: string, todoListID: string) => void
+    changeFilter: (filter: FilterValuesType, todoListID: string) => void
+    addTask: (title: string, todoListID: string) => void
+    filter: FilterValuesType
+    changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
+    removeTotoList: (todoListID: string) => void
+    addTodo: ()=> void
 }
 
-type PropsTodolist = {
-    TasksTodolist: Array<DataProps>
-    setFilter: (info: 'All' | 'Active' | 'Completed') => void
-    ChangeIsDone: (isDone: boolean, id: string) => void
-    inputValue: string
-    setInputValue: (e: string) => void
-    addTask: (inputValue: string) => void
-    DelTask: (id: string) => void
-}
+function TodoList(props: PropsType) {
+    const [title, setTitle] = useState<string>("")
+    const [error, setError] = useState<boolean>(false)
 
-export const Todolist = ({setFilter, ...props}: PropsTodolist) => {
+    const addTask = () => {
+        const trimmedTitle = title.trim()
+        if(trimmedTitle){
+            props.addTask(trimmedTitle, props.id)
+        } else {
+            setError(true)
+        }
+        setTitle("")
+    }
+    const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
+        setTitle(e.currentTarget.value)
+        setError(false)
+    }
+    const onKeyPressAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
+        if(e.key === "Enter"){
+            addTask();
+        }
+    }
+    const setAllFilterValue = () =>props.changeFilter("all", props.id)
+    const setActiveFilterValue = () =>props.changeFilter("active", props.id)
+    const setCompletedFilterValue = () =>props.changeFilter("completed", props.id)
+    const getBtnClass = (filter: FilterValuesType) => props.filter=== filter ? "active" : "" ;
 
-    const FilterAllHandler = () => setFilter('All')
-    const FilterActiveHandler = () => setFilter('Active')
-    const FilterCompletedHandler = () => setFilter('Completed')
-    const FilterCheckBox = (isDone: boolean, id: string) => props.ChangeIsDone(isDone, id)
-    const onChangeInput = (e: ChangeEvent<HTMLInputElement>) => props.setInputValue(e.currentTarget.value)
-    const onClickInput = () => props.addTask(props.inputValue)
-    const KeyPress = (e: KeyboardEvent<HTMLInputElement>) => e.key == "Enter" ? props.addTask(props.inputValue) : ''
-    const OnDelete = (id: string) => props.DelTask(id)
-    // const OnDelete = (e: MouseEvent<HTMLButtonElement>) => props.DelTask(e.currentTarget.id)
+    const tasksJSX = props.tasks.map(task => {
+        const getClasses = () => task.isDone ? "is-done": "" ;
+        const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
+            props.changeTaskStatus(task.id, e.currentTarget.checked, props.id)
+        const removeTask = () => props.removeTask(task.id, props.id)
+        return (
+            <li key={task.id} className={getClasses()}>
+                <button onClick={removeTask}>x</button>
+                <input
+                    type="checkbox"
+                    checked={task.isDone}
+                    onChange={changeStatus}
+                />
+                <span>{task.title}</span>
+            </li>
+        )
+    })
+    const errorClass = error ? "error" : "" ;
+    const errorMessage = <div style={{color: "red"}}>Title is required!</div>
 
-    return (
+    return(
         <div>
+            <button onClick={()=>props.removeTotoList(props.id)}>X</button>
+            <button onClick={props.addTodo}>+</button>
+            <h3>{props.title}
+            </h3>
             <div>
-                <h3>What to learn</h3>
-                <div>
-                    <input
-                        value={props.inputValue}
-                        onChange={onChangeInput}
-                        onKeyPress={KeyPress}
-                    />
-                    <button onClick={onClickInput}>+</button>
-                </div>
-                <ul>
-                    {props.TasksTodolist.map(m => {
-
-                        return (
-                            <li>
-                                <button onClick={()=>OnDelete(m.id)}>X</button>
-                                <input
-                                    onChange={(e) => FilterCheckBox(e.currentTarget.checked, m.id)}
-                                    type="checkbox"
-                                    checked={m.isDone}/>
-                                <span>{m.title}</span>
-                            </li>
-                        )
-                    })}
-                </ul>
-                <div>
-                    <button onClick={FilterAllHandler}>All</button>
-                    <button onClick={FilterActiveHandler}>Active</button>
-                    <button onClick={FilterCompletedHandler}>Completed</button>
-                </div>
+                <input
+                    value={title}
+                    onChange={changeTitle}
+                    onKeyPress={onKeyPressAddTask}
+                    className={errorClass}
+                />
+                <button onClick={addTask}>+</button>
+                {error && errorMessage}
             </div>
-
-
+            <ul>
+                {tasksJSX}
+            </ul>
+            <div>
+                <button
+                    className={getBtnClass("all")}
+                    onClick={setAllFilterValue}>All</button>
+                <button
+                    className={getBtnClass("active")}
+                    onClick={setActiveFilterValue}>Active</button>
+                <button
+                    className={getBtnClass("completed")}
+                    onClick={setCompletedFilterValue}>Completed</button>
+            </div>
         </div>
     )
 }
+
+export default TodoList;
