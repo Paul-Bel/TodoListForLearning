@@ -8,7 +8,6 @@ type TitleType = {
     title: string,
     isDone: boolean,
 }
-
 type PropsTypeTD = {
     titleList: Array<TitleType>,
     addTask: (Event: string) => void
@@ -17,7 +16,6 @@ type PropsTypeTD = {
     setFilter: (info: string) => void
     filter: string
 }
-
 
 export function Todolist(props: PropsTypeTD) {
 
