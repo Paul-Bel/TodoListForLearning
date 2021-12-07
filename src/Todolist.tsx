@@ -1,5 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType, TaskType} from "./App";
+import s from './Todolist.module.css'
 
 type PropsType = {
     id: string
@@ -11,7 +12,7 @@ type PropsType = {
     filter: FilterValuesType
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
     removeTotoList: (todoListID: string) => void
-    addTodo: ()=> void
+    addTodo: () => void
 }
 
 function TodoList(props: PropsType) {
@@ -20,7 +21,7 @@ function TodoList(props: PropsType) {
 
     const addTask = () => {
         const trimmedTitle = title.trim()
-        if(trimmedTitle){
+        if (trimmedTitle) {
             props.addTask(trimmedTitle, props.id)
         } else {
             setError(true)
@@ -32,17 +33,17 @@ function TodoList(props: PropsType) {
         setError(false)
     }
     const onKeyPressAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
-        if(e.key === "Enter"){
+        if (e.key === "Enter") {
             addTask();
         }
     }
-    const setAllFilterValue = () =>props.changeFilter("all", props.id)
-    const setActiveFilterValue = () =>props.changeFilter("active", props.id)
-    const setCompletedFilterValue = () =>props.changeFilter("completed", props.id)
-    const getBtnClass = (filter: FilterValuesType) => props.filter=== filter ? "active" : "" ;
+    const setAllFilterValue = () => props.changeFilter("all", props.id)
+    const setActiveFilterValue = () => props.changeFilter("active", props.id)
+    const setCompletedFilterValue = () => props.changeFilter("completed", props.id)
+    const getBtnClass = (filter: FilterValuesType) => props.filter === filter ? "active" : "";
 
     const tasksJSX = props.tasks.map(task => {
-        const getClasses = () => task.isDone ? "is-done": "" ;
+        const getClasses = () => task.isDone ? "is-done" : "";
         const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
             props.changeTaskStatus(task.id, e.currentTarget.checked, props.id)
         const removeTask = () => props.removeTask(task.id, props.id)
@@ -58,13 +59,12 @@ function TodoList(props: PropsType) {
             </li>
         )
     })
-    const errorClass = error ? "error" : "" ;
+    const errorClass = error ? "error" : "";
     const errorMessage = <div style={{color: "red"}}>Title is required!</div>
 
-    return(
-        <div>
-            <button onClick={()=>props.removeTotoList(props.id)}>X</button>
-            <button onClick={props.addTodo}>+</button>
+    return (
+        <div className={s.border}>
+            <button onClick={() => props.removeTotoList(props.id)}>X</button>
             <h3>{props.title}
             </h3>
             <div>
@@ -83,13 +83,16 @@ function TodoList(props: PropsType) {
             <div>
                 <button
                     className={getBtnClass("all")}
-                    onClick={setAllFilterValue}>All</button>
+                    onClick={setAllFilterValue}>All
+                </button>
                 <button
                     className={getBtnClass("active")}
-                    onClick={setActiveFilterValue}>Active</button>
+                    onClick={setActiveFilterValue}>Active
+                </button>
                 <button
                     className={getBtnClass("completed")}
-                    onClick={setCompletedFilterValue}>Completed</button>
+                    onClick={setCompletedFilterValue}>Completed
+                </button>
             </div>
         </div>
     )

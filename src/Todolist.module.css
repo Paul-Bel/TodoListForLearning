@@ -8,3 +8,11 @@
 .activeFilter {
     background-color: aquamarine;
 }
+.border {
+    border-width: 5px;
+    border-style: outset;
+    border-color: #3333e7;
+    border-radius: 15px;
+    padding: 20px;
+    background-color: #5092d3;
+}

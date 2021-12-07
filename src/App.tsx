@@ -77,11 +77,11 @@ function App() {
         const ID = v1()
         const newTD: TodoListType = {id: ID, title: "New TD", filter: 'all'}
         setTodoList([...todoList, newTD])
-        setTasks( {...tasks, [newTD.id]: []})
+        setTasks({...tasks, [newTD.id]: []})
     }
 
 
-    const todolistComponents = todoList.map( m => {
+    const todolistComponents = todoList.map(m => {
 
         let tasksForRender = tasks[m.id]
         if (m.filter === "active") {
@@ -110,6 +110,7 @@ function App() {
     //UI:
     return (
         <div className="App">
+            <button className={"addTD"} onClick={addTodo}>New TodoList</button>
             {todolistComponents}
         </div>
     );
