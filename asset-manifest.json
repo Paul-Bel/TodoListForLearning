@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/TodoListForLearningyarn%20gh/static/css/main.61a4cb33.chunk.css",
+    "main.js": "/TodoListForLearningyarn%20gh/static/js/main.738249a8.chunk.js",
+    "main.js.map": "/TodoListForLearningyarn%20gh/static/js/main.738249a8.chunk.js.map",
+    "runtime-main.js": "/TodoListForLearningyarn%20gh/static/js/runtime-main.c8f62e05.js",
+    "runtime-main.js.map": "/TodoListForLearningyarn%20gh/static/js/runtime-main.c8f62e05.js.map",
+    "static/js/2.a6381edb.chunk.js": "/TodoListForLearningyarn%20gh/static/js/2.a6381edb.chunk.js",
+    "static/js/2.a6381edb.chunk.js.map": "/TodoListForLearningyarn%20gh/static/js/2.a6381edb.chunk.js.map",
+    "index.html": "/TodoListForLearningyarn%20gh/index.html",
+    "static/css/main.61a4cb33.chunk.css.map": "/TodoListForLearningyarn%20gh/static/css/main.61a4cb33.chunk.css.map",
+    "static/js/2.a6381edb.chunk.js.LICENSE.txt": "/TodoListForLearningyarn%20gh/static/js/2.a6381edb.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.c8f62e05.js",
+    "static/js/2.a6381edb.chunk.js",
+    "static/css/main.61a4cb33.chunk.css",
+    "static/js/main.738249a8.chunk.js"
+  ]
+}
