@@ -23,11 +23,9 @@ type TodoListType = {
 type TaskStateType = {
     [key: string]: TaskType[]
 }
-
 function App() {
     const todoListID_1 = v1()
     const todoListID_2 = v1()
-
     const [todoList, setTodoList] = useState<Array<TodoListType>>([
         {id: todoListID_1, title: "What to learn", filter: 'all'},
         {id: todoListID_2, title: "What to by", filter: 'all'},
