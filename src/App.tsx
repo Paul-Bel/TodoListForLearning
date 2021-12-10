@@ -3,11 +3,6 @@ import './App.css';
 import TodoList from "./Todolist";
 import {v1} from "uuid";
 
-// Create
-// Read
-// Update
-// Delete
-// CRUD
 export type TaskType = {
     id: string
     title: string
@@ -54,11 +49,7 @@ function App() {
         setTasks(copy)
     }
     const addTask = (newTaskTitle: string, todoListID: string) => {
-        const newTask: TaskType = {
-            id: v1(),
-            title: newTaskTitle,
-            isDone: false
-        }
+        const newTask: TaskType = {id: v1(), title: newTaskTitle, isDone: false}
         const copy = {...tasks}
         copy[todoListID] = [newTask, ...tasks[todoListID]]
         setTasks(copy)

@@ -33,10 +33,9 @@ function TodoList(props: PropsType) {
         setError(false)
     }
     const onKeyPressAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === "Enter") {
-            addTask();
-        }
+        if (e.key === 'Enter') {addTask();}
     }
+
     const setAllFilterValue = () => props.changeFilter("all", props.id)
     const setActiveFilterValue = () => props.changeFilter("active", props.id)
     const setCompletedFilterValue = () => props.changeFilter("completed", props.id)
@@ -73,6 +72,7 @@ function TodoList(props: PropsType) {
                     onChange={changeTitle}
                     onKeyPress={onKeyPressAddTask}
                     className={errorClass}
+
                 />
                 <button onClick={addTask}>+</button>
                 {error && errorMessage}
