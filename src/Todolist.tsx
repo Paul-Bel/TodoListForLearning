@@ -13,13 +13,11 @@ type PropsType = {
     filter: FilterValuesType
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
     removeTotoList: (todoListID: string) => void
-    addTodo: () => void
 }
 
 function TodoList(props: PropsType) {
 
     const addTask = (value: string) => {
-
             props.addTask(value, props.id)
     }
 
@@ -52,27 +50,7 @@ function TodoList(props: PropsType) {
             <h3>{props.title}
             </h3>
             <div>
-
-
                 <AddInformations addItem={addTask}/>
-
-
-
-
-
-
-
-
-
-                {/*<input*/}
-                {/*    value={title}*/}
-                {/*    onChange={changeTitle}*/}
-                {/*    onKeyPress={onKeyPressAddTask}*/}
-                {/*    className={errorClass}*/}
-
-                {/*/>*/}
-                {/*<button onClick={addTask}>+</button>*/}
-                {/*{error && errorMessage}*/}
             </div>
             <ul>
                 {tasksJSX}

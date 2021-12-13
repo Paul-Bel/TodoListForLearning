@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import './App.css';
 import TodoList from "./Todolist";
 import {v1} from "uuid";
+import {AddInformations} from "./components/addInformations";
 
 export type TaskType = {
     id: string
@@ -62,9 +63,9 @@ function App() {
     const removeTotoList = (todoListID: string) => {
         setTodoList(todoList.filter(f => f.id !== todoListID))
     }
-    const addTodo = () => {
+    const addTodo = (title: string) => {
         const ID = v1()
-        const newTD: TodoListType = {id: ID, title: "New TD", filter: 'all'}
+        const newTD: TodoListType = {id: ID, title: title, filter: 'all'}
         setTodoList([...todoList, newTD])
         setTasks({...tasks, [newTD.id]: []})
     }
@@ -91,7 +92,7 @@ function App() {
                 changeFilter={changeFilter}
                 changeTaskStatus={changeTaskStatus}
                 removeTotoList={removeTotoList}
-                addTodo={addTodo}
+
             />
         )
     })
@@ -99,7 +100,7 @@ function App() {
     //UI:
     return (
         <div className="App">
-            <button className={"addTD"} onClick={addTodo}>New TodoList</button>
+            <AddInformations addItem={addTodo} />
             {todolistComponents}
         </div>
     );
