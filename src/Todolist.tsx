@@ -1,6 +1,7 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import s from './Todolist.module.css'
+import {AddInformations} from "./components/addInformations";
 
 type PropsType = {
     id: string
@@ -16,24 +17,10 @@ type PropsType = {
 }
 
 function TodoList(props: PropsType) {
-    const [title, setTitle] = useState<string>("")
-    const [error, setError] = useState<boolean>(false)
 
-    const addTask = () => {
-        const trimmedTitle = title.trim()
-        if (trimmedTitle) {
-            props.addTask(trimmedTitle, props.id)
-        } else {
-            setError(true)
-        }
-        setTitle("")
-    }
-    const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
-        setTitle(e.currentTarget.value)
-        setError(false)
-    }
-    const onKeyPressAddTask = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {addTask();}
+    const addTask = (value: string) => {
+
+            props.addTask(value, props.id)
     }
 
     const setAllFilterValue = () => props.changeFilter("all", props.id)
@@ -58,8 +45,6 @@ function TodoList(props: PropsType) {
             </li>
         )
     })
-    const errorClass = error ? "error" : "";
-    const errorMessage = <div style={{color: "red"}}>Title is required!</div>
 
     return (
         <div className={s.border}>
@@ -67,15 +52,27 @@ function TodoList(props: PropsType) {
             <h3>{props.title}
             </h3>
             <div>
-                <input
-                    value={title}
-                    onChange={changeTitle}
-                    onKeyPress={onKeyPressAddTask}
-                    className={errorClass}
 
-                />
-                <button onClick={addTask}>+</button>
-                {error && errorMessage}
+
+                <AddInformations addItem={addTask}/>
+
+
+
+
+
+
+
+
+
+                {/*<input*/}
+                {/*    value={title}*/}
+                {/*    onChange={changeTitle}*/}
+                {/*    onKeyPress={onKeyPressAddTask}*/}
+                {/*    className={errorClass}*/}
+
+                {/*/>*/}
+                {/*<button onClick={addTask}>+</button>*/}
+                {/*{error && errorMessage}*/}
             </div>
             <ul>
                 {tasksJSX}

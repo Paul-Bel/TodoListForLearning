@@ -12,6 +12,7 @@ export const AddInformations = (props: AddInformationsPropsType) => {
     const errorClass = error ? "error" : "";
     const errorMessage = <div style={{color: "red"}}>Title is required!</div>
 
+
     const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
         setError(false)
