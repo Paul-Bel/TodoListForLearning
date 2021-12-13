@@ -1,7 +1,8 @@
-import React, {ChangeEvent, KeyboardEvent, useState} from 'react';
+import React, {ChangeEvent, KeyboardEvent, MouseEvent, useState} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import s from './Todolist.module.css'
-import {AddInformations} from "./components/addInformations";
+import {AddInformations} from "./components/AddInformations";
+import {EditableSpan} from "./components/EditableSpan";
 
 type PropsType = {
     id: string
@@ -13,7 +14,9 @@ type PropsType = {
     filter: FilterValuesType
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
     removeTotoList: (todoListID: string) => void
+    changeTaskTitle: (taskID: string, title: string, todoListID: string) => void
 }
+
 
 function TodoList(props: PropsType) {
 
@@ -26,12 +29,20 @@ function TodoList(props: PropsType) {
     const setCompletedFilterValue = () => props.changeFilter("completed", props.id)
     const getBtnClass = (filter: FilterValuesType) => props.filter === filter ? "active" : "";
 
+
+
     const tasksJSX = props.tasks.map(task => {
         const getClasses = () => task.isDone ? "is-done" : "";
         const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
             props.changeTaskStatus(task.id, e.currentTarget.checked, props.id)
         const removeTask = () => props.removeTask(task.id, props.id)
+        const changeTitle = (value: string) => {
+            props.changeTaskTitle(task.id, value, props.id)
+        }
+
+
         return (
+
             <li key={task.id} className={getClasses()}>
                 <button onClick={removeTask}>x</button>
                 <input
@@ -39,7 +50,11 @@ function TodoList(props: PropsType) {
                     checked={task.isDone}
                     onChange={changeStatus}
                 />
-                <span>{task.title}</span>
+                <EditableSpan
+                    title={task.title}
+                    changeTitle={changeTitle}
+                />
+                {/*<span>{task.title}</span>*/}
             </li>
         )
     })
