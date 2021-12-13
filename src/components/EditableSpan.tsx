@@ -20,6 +20,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
     const onChangeInput = (e: KeyboardEvent<HTMLInputElement>) => {
         if (e.key === 'Enter') {
             props.changeTitle(value)
+            setEditMode(true)
         } else {
             return
         }

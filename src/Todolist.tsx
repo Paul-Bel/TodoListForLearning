@@ -15,8 +15,8 @@ type PropsType = {
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
     removeTotoList: (todoListID: string) => void
     changeTaskTitle: (taskID: string, title: string, todoListID: string) => void
+    changeTitleTD: (title: string, todoListID: string) => void
 }
-
 
 function TodoList(props: PropsType) {
 
@@ -30,7 +30,6 @@ function TodoList(props: PropsType) {
     const getBtnClass = (filter: FilterValuesType) => props.filter === filter ? "active" : "";
 
 
-
     const tasksJSX = props.tasks.map(task => {
         const getClasses = () => task.isDone ? "is-done" : "";
         const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
@@ -39,8 +38,6 @@ function TodoList(props: PropsType) {
         const changeTitle = (value: string) => {
             props.changeTaskTitle(task.id, value, props.id)
         }
-
-
         return (
 
             <li key={task.id} className={getClasses()}>
@@ -54,15 +51,17 @@ function TodoList(props: PropsType) {
                     title={task.title}
                     changeTitle={changeTitle}
                 />
-                {/*<span>{task.title}</span>*/}
             </li>
         )
     })
-
+    const changeTDTitle = (value: string) => {
+        props.changeTitleTD(value, props.id)
+        console.log(value)}
     return (
         <div className={s.border}>
             <button onClick={() => props.removeTotoList(props.id)}>X</button>
-            <h3>{props.title}
+            <h3>
+                <EditableSpan title={props.title} changeTitle={changeTDTitle}/>
             </h3>
             <div>
                 <AddInformations addItem={addTask}/>
