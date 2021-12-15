@@ -1,8 +1,8 @@
 import React, {ChangeEvent, KeyboardEvent, MouseEvent, useState} from 'react';
 import {FilterValuesType, TaskType} from "./App";
-import s from './Todolist.module.css'
-import {AddInformations} from "./components/AddInformations";
-import {EditableSpan} from "./components/EditableSpan";
+import s from '../Todolist.module.css'
+import {AddInformations} from "./AddInformations";
+import {EditableSpan} from "./EditableSpan";
 
 type PropsType = {
     id: string
