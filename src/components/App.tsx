@@ -19,6 +19,7 @@ type TodoListType = {
 type TaskStateType = {
     [key: string]: TaskType[]
 }
+
 function App() {
     const todoListID_1 = v1()
     const todoListID_2 = v1()
@@ -65,7 +66,7 @@ function App() {
         copyTasks[todoListID] = tasks[todoListID].map(m => m.id === taskID ? {...m, isDone} : m)
         setTasks(copyTasks)
     }
-        const changeTaskTitle = (taskID: string, title: string, todoListID: string) => {
+    const changeTaskTitle = (taskID: string, title: string, todoListID: string) => {
         const copyTasks = {...tasks}
         copyTasks[todoListID] = tasks[todoListID].map(m => m.id === taskID ? {...m, title} : m)
         setTasks(copyTasks)

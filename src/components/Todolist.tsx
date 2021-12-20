@@ -1,9 +1,9 @@
 import React, {ChangeEvent} from 'react';
 import {FilterValuesType, TaskType} from "./App";
-import s from '../Todolist.module.css'
 import {AddInformations} from "./AddInformations";
 import {EditableSpan} from "./EditableSpan";
 import {Button, ButtonGroup} from "@material-ui/core";
+import s from './../Todolist.module.css'
 
 type PropsType = {
     id: string
@@ -22,7 +22,7 @@ type PropsType = {
 function TodoList(props: PropsType) {
 
     const addTask = (value: string) => {
-            props.addTask(value, props.id)
+        props.addTask(value, props.id)
     }
 
     const setAllFilterValue = () => props.changeFilter("all", props.id)
@@ -57,7 +57,8 @@ function TodoList(props: PropsType) {
     })
     const changeTDTitle = (value: string) => {
         props.changeTitleTD(value, props.id)
-        console.log(value)}
+        console.log(value)
+    }
     return (
         <div className={s.border}>
             <button onClick={() => props.removeTotoList(props.id)}>X</button>
@@ -72,22 +73,28 @@ function TodoList(props: PropsType) {
             </ul>
             <div>
                 <ButtonGroup
-                variant={"outlined"}
-                size={"small"}
-                disableElevation
+                    variant={"outlined"}
+                    size={"small"}
+                    disableElevation
+
                 >
-                <Button
-                    color={props.filter === "all" ? "secondary" : "primary" }
-                    onClick={setAllFilterValue}>All
-                </Button>
-                <Button
-                    color={props.filter === "active" ? "secondary" : "primary" }
-                    onClick={setActiveFilterValue}>Active
-                </Button>
-                <Button
-                    color={props.filter === "completed" ? "secondary" : "primary" }
-                    onClick={setCompletedFilterValue}>Completed
-                </Button>
+                    <Button
+                        color={props.filter === "all" ? "secondary" : "primary"}
+                        onClick={setAllFilterValue}
+                        className={s.buttons}
+                    >All
+                    </Button>
+                    <Button
+                        color={props.filter === "active" ? "secondary" : "primary"}
+                        onClick={setActiveFilterValue}
+                        className={s.buttons}
+                    >Active
+                    </Button>
+                    <Button
+                        color={props.filter === "completed" ? "secondary" : "primary"}
+                        onClick={setCompletedFilterValue}
+                    >Completed
+                    </Button>
                 </ButtonGroup>
             </div>
         </div>

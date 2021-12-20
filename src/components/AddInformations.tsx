@@ -18,7 +18,9 @@ export const AddInformations = (props: AddInformationsPropsType) => {
         setError(false)
     }
     const onKeyPressAdd = (e: KeyboardEvent<HTMLInputElement>) => {
-        if (e.key === 'Enter') {addItem();}
+        if (e.key === 'Enter') {
+            addItem();
+        }
     }
     const addItem = () => {
         const trimmedTitle = title.trim()
@@ -31,16 +33,16 @@ export const AddInformations = (props: AddInformationsPropsType) => {
     }
 
     return (
-<div>
-    <input
-        value={title}
-        onChange={changeTitle}
-        onKeyPress={onKeyPressAdd}
-        className={errorClass}
+        <div>
+            <input
+                value={title}
+                onChange={changeTitle}
+                onKeyPress={onKeyPressAdd}
+                className={errorClass}
 
-    />
-    <button onClick={addItem}>+</button>
-    {error && errorMessage}
-</div>
+            />
+            <button onClick={addItem}>+</button>
+            {error && errorMessage}
+        </div>
     )
 }
