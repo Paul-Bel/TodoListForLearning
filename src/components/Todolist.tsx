@@ -1,8 +1,9 @@
-import React, {ChangeEvent, KeyboardEvent, MouseEvent, useState} from 'react';
+import React, {ChangeEvent} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import s from '../Todolist.module.css'
 import {AddInformations} from "./AddInformations";
 import {EditableSpan} from "./EditableSpan";
+import {Button, ButtonGroup} from "@material-ui/core";
 
 type PropsType = {
     id: string
@@ -70,18 +71,24 @@ function TodoList(props: PropsType) {
                 {tasksJSX}
             </ul>
             <div>
-                <button
-                    className={getBtnClass("all")}
+                <ButtonGroup
+                variant={"outlined"}
+                size={"small"}
+                disableElevation
+                >
+                <Button
+                    color={props.filter === "all" ? "secondary" : "primary" }
                     onClick={setAllFilterValue}>All
-                </button>
-                <button
-                    className={getBtnClass("active")}
+                </Button>
+                <Button
+                    color={props.filter === "active" ? "secondary" : "primary" }
                     onClick={setActiveFilterValue}>Active
-                </button>
-                <button
-                    className={getBtnClass("completed")}
+                </Button>
+                <Button
+                    color={props.filter === "completed" ? "secondary" : "primary" }
                     onClick={setCompletedFilterValue}>Completed
-                </button>
+                </Button>
+                </ButtonGroup>
             </div>
         </div>
     )
