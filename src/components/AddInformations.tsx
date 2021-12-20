@@ -10,7 +10,7 @@ export const AddInformations = (props: AddInformationsPropsType) => {
     const [error, setError] = useState<boolean>(false)
 
     const errorClass = error ? "error" : "";
-    const errorMessage = <div style={{color: "red"}}>Title is required!</div>
+    const errorMessage = <div style={{color: "darkred"}}>Title is required!</div>
 
 
     const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {

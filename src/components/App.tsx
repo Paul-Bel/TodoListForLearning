@@ -28,13 +28,13 @@ function App() {
     ])
     const [tasks, setTasks] = useState<TaskStateType>({
         [todoListID_1]: [
-            {id: v1(), title: "HTML", isDone: true},
+            {id: v1(), title: "HTML", isDone: fa},
             {id: v1(), title: "CSS", isDone: true},
             {id: v1(), title: "REACT", isDone: false},
         ],
         [todoListID_2]: [
             {id: v1(), title: "Bread", isDone: true},
-            {id: v1(), title: "Milk", isDone: true},
+            {id: v1(), title: "Milk", isDone: false},
             {id: v1(), title: "Coffee", isDone: false},
         ]
     })
