@@ -2,8 +2,9 @@ import React, {ChangeEvent} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import {AddInformations} from "./AddInformations";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup} from "@material-ui/core";
+import {Button, ButtonGroup, Checkbox, IconButton, ListItem, Typography} from "@material-ui/core";
 import s from './../Todolist.module.css'
+import {Delete, DeleteForeverTwoTone} from "@material-ui/icons";
 
 type PropsType = {
     id: string
@@ -32,7 +33,6 @@ function TodoList(props: PropsType) {
 
 
     const tasksJSX = props.tasks.map(task => {
-        const getClasses = () => task.isDone ? "is-done" : "";
         const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
             props.changeTaskStatus(task.id, e.currentTarget.checked, props.id)
         const removeTask = () => props.removeTask(task.id, props.id)
@@ -41,18 +41,28 @@ function TodoList(props: PropsType) {
         }
         return (
 
-            <li key={task.id} className={getClasses()}>
-                <button onClick={removeTask}>x</button>
-                <input
-                    type="checkbox"
-                    checked={task.isDone}
-                    onChange={changeStatus}
-                />
-                <EditableSpan
-                    title={task.title}
-                    changeTitle={changeTitle}
-                />
-            </li>
+            <ListItem
+                key={task.id}
+                className={s.task}
+            >
+
+                <div className={s.tasksDIV}>
+                    <Checkbox
+                        checked={task.isDone}
+                        onChange={changeStatus}
+                    />
+                    <EditableSpan
+                        title={task.title}
+                        changeTitle={changeTitle}
+                    />
+                </div>
+
+                <IconButton onClick={removeTask} className={s.icon}>
+                    <DeleteForeverTwoTone/>
+                </IconButton>
+
+            </ListItem>
+
         )
     })
     const changeTDTitle = (value: string) => {
@@ -60,23 +70,32 @@ function TodoList(props: PropsType) {
         console.log(value)
     }
     return (
-        <div className={s.border}>
-            <button onClick={() => props.removeTotoList(props.id)}>X</button>
+        <div>
+
             <h3>
+                <IconButton
+                    color={'primary'}
+                    onClick={() => props.removeTotoList(props.id)}
+                >
+                    <Delete/>
+                </IconButton>
+
                 <EditableSpan title={props.title} changeTitle={changeTDTitle}/>
+
             </h3>
             <div>
                 <AddInformations addItem={addTask}/>
             </div>
-            <ul>
+
+
+            <ul className={s.tasks}>
                 {tasksJSX}
             </ul>
             <div>
                 <ButtonGroup
-                    variant={"outlined"}
+                    variant={"contained"}
                     size={"small"}
                     disableElevation
-
                 >
                     <Button
                         color={props.filter === "all" ? "secondary" : "primary"}

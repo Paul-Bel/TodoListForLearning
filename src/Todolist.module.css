@@ -5,18 +5,29 @@
 .errorMessage {
     color: red;
 }
-.activeFilter {
-    background-color: aquamarine;
-}
+
 .border {
-    border-width: 5px;
-    border-style: outset;
-    border-color: #3333e7;
-    border-radius: 15px;
+    width: 320px;
     padding: 20px;
-    background-color: #5092d3;
 }
 
-.buttons {
-    color: white;
+.tasks {
+    margin: 0;
+    padding: 0;
+}
+
+.task {
+    display: flex !important;
+    justify-content: space-between !important;
+}
+
+.tasksDIV {
+    display: flex;
+}
+
+.icon {
+    margin-left: auto;
+}
+.title {
+    padding-top: 8px
 }

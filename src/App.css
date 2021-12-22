@@ -1,16 +1,16 @@
-.App {
-  padding: 30px;
-  display: flex;
-}
+/*.App {*/
+/*  padding: 10px;*/
+/*  display: flex;*/
+/*}*/
 
-.App > div {
-  margin-right: 50px;
-}
-.addTD {
-  /*vertical-align: bottom;*/
-  text-align: center;
-  transform: rotate(270deg);
-  margin-top: 50px;
-  height: 25px;
-  font-size: 15px;
-}
+/*.App > div {*/
+/*  margin-right: 10px;*/
+/*}*/
+/*.addTD {*/
+/*  !*vertical-align: bottom;*!*/
+/*  text-align: center;*/
+/*  transform: rotate(270deg);*/
+/*  margin-top: 50px;*/
+/*  height: 25px;*/
+/*  font-size: 15px;*/
+/*}*/
