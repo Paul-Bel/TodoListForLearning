@@ -31,3 +31,7 @@
 .title {
     padding-top: 8px
 }
+.error {
+    font-size: 10px;
+    color: blue;
+}
