@@ -44,6 +44,7 @@ export const AddInformations = (props: AddInformationsPropsType) => {
                 size={'small'}
                 color={'primary'}
                 error={error}
+                helperText={error && "Title is required"}
             />
             <IconButton onClick={addItem}>
           <Queue/>
