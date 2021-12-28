@@ -4,7 +4,6 @@ import TodoList from "./Todolist";
 import {v1} from "uuid";
 import {AddInformations} from "./AddInformations";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
-import s from "../Todolist.module.css";
 import {Menu} from "@material-ui/icons";
 
 export type TaskType = {
@@ -14,7 +13,7 @@ export type TaskType = {
 }
 export type FilterValuesType = "all" | "active" | "completed"
 
-type TodoListType = {
+export type TodoListType = {
     id: string
     title: string
     filter: FilterValuesType
