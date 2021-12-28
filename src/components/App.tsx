@@ -12,15 +12,8 @@ export type TaskType = {
     isDone: boolean
 }
 export type FilterValuesType = "all" | "active" | "completed"
-
-export type TodoListType = {
-    id: string
-    title: string
-    filter: FilterValuesType
-}
-type TaskStateType = {
-    [key: string]: TaskType[]
-}
+export type TodoListType = {id: string, title: string, filter: FilterValuesType}
+type TaskStateType = {[key: string]: TaskType[]}
 
 function App() {
     const todoListID_1 = v1()
