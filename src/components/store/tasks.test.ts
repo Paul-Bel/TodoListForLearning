@@ -14,5 +14,6 @@ expect(multyReducer(jun, div)).toBe(20)
 expect(multyReducer(jun, mult)).toBe(50000)
 expect(multyReducer(jun, sub)).toBe(950)
 expect(multyReducer(jun, nullT)).not.toBe(960)
+expect(multyReducer(jun, nullT)).not.toBe(4960)
 
 })
