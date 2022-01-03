@@ -88,7 +88,6 @@ function App() {
                 key={m.id}
                 item
             >
-
                 <Paper
                     elevation={7}
                     style={{padding: "20px"}}
@@ -118,8 +117,7 @@ function App() {
 
             <AppBar position="static">
                 <Toolbar
-                    style={{justifyContent: "space-between"}}
-                >
+                    style={{justifyContent: "space-between"}}>
                     <IconButton edge="start" color="inherit" aria-label="menu">
                         <Menu/>
                     </IconButton>
@@ -129,9 +127,6 @@ function App() {
                     <Button color="secondary" variant={"outlined"}>Login</Button>
                 </Toolbar>
             </AppBar>
-
-
-
 
             <Container
                 fixed
