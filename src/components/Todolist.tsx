@@ -2,7 +2,7 @@ import React, {ChangeEvent} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import {AddInformations} from "./AddInformations";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup, Checkbox, IconButton, ListItem, Typography} from "@material-ui/core";
+import {Button, ButtonGroup, Checkbox, IconButton, ListItem} from "@material-ui/core";
 import s from './../Todolist.module.css'
 import {Delete, DeleteForeverTwoTone} from "@material-ui/icons";
 
@@ -29,8 +29,6 @@ function TodoList(props: PropsType) {
     const setAllFilterValue = () => props.changeFilter("all", props.id)
     const setActiveFilterValue = () => props.changeFilter("active", props.id)
     const setCompletedFilterValue = () => props.changeFilter("completed", props.id)
-    const getBtnClass = (filter: FilterValuesType) => props.filter === filter ? "active" : "";
-
 
     const tasksJSX = props.tasks.map(task => {
         const changeStatus = (e: ChangeEvent<HTMLInputElement>) =>
@@ -39,19 +37,19 @@ function TodoList(props: PropsType) {
         const changeTitle = (value: string) => {
             props.changeTaskTitle(task.id, value, props.id)
         }
+        const Span = React.memo(EditableSpan)
         return (
 
             <ListItem
                 key={task.id}
                 className={s.task}
             >
-
                 <div className={s.tasksDIV}>
                     <Checkbox
                         checked={task.isDone}
                         onChange={changeStatus}
                     />
-                    <EditableSpan
+                    <Span
                         title={task.title}
                         changeTitle={changeTitle}
                     />

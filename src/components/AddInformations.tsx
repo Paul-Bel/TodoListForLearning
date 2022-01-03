@@ -1,7 +1,6 @@
 import React, {ChangeEvent, KeyboardEvent, useState} from "react";
-import s from './../Todolist.module.css'
-import {Backdrop, Button, IconButton, TextField} from "@material-ui/core";
-import {AddCircleOutlineSharp, AddLocationSharp, Queue} from "@material-ui/icons";
+import {IconButton, TextField} from "@material-ui/core";
+import {Queue} from "@material-ui/icons";
 
 type AddInformationsPropsType = {
     addItem: (value: string) => void
@@ -11,9 +10,6 @@ export const AddInformations = (props: AddInformationsPropsType) => {
 
     const [title, setTitle] = useState<string>("")
     const [error, setError] = useState<boolean>(false)
-
-    const errorClass = error ? "error" : "";
-    const errorMessage = <div style={{color: "darkred"}}>Title is required!</div>
 
     const changeTitle = (e: ChangeEvent<HTMLInputElement>) => {
         setTitle(e.currentTarget.value)
@@ -33,6 +29,7 @@ export const AddInformations = (props: AddInformationsPropsType) => {
         }
         setTitle("")
     }
+
     return (
         <div>
             <TextField
