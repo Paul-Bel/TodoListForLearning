@@ -62,3 +62,5 @@ test ('correct filter todolist', () => {
     expect(endState[1].filter).toBe("active")
     expect(endState[0].filter).toBe('all')
 })
+
+
