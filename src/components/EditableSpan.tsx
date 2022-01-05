@@ -30,7 +30,7 @@ export const EditableSpan = (props: EditableSpanPropsType) => {
             return
         }
     }
-
+//memo
     return (
         editMode ?
             <span

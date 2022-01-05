@@ -1,30 +1,24 @@
 .error {
     border: red 1px solid;
 }
-
 .errorMessage {
     color: red;
 }
-
 .border {
     width: 320px;
     padding: 20px;
 }
-
 .tasks {
     margin: 0;
     padding: 0;
 }
-
 .task {
     display: flex !important;
     justify-content: space-between !important;
 }
-
 .tasksDIV {
     display: flex;
 }
-
 .icon {
     margin-left: auto;
 }
@@ -35,3 +29,16 @@
     font-size: 10px;
     color: blue;
 }
+@media screen and (max-width: 800px) {
+    .border {
+        width: 192px;
+        padding: 12px;
+    }
+    .title {
+        padding-top: 5px
+    }
+    .error {
+        font-size: 6px;
+        color: blue;
+    }
+    }
