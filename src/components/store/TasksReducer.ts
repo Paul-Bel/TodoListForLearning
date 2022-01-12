@@ -13,9 +13,10 @@ export type ActionType = AddActionType
     | ChangeTaskTitleType
     | ActionTDaddType
     | ActionRMTDType
+const initialState: TaskStateType = {}
 
 export const tasksReducer =
-    (state: TaskStateType, action: ActionType): TaskStateType => {
+    (state: TaskStateType = initialState, action: ActionType): TaskStateType => {
 
         switch (action.type) {
             case 'RM_Task':

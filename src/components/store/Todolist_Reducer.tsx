@@ -7,9 +7,9 @@ type ActionChengeTDTitleType = { type: 'Change-Todolist-Title', title: string, i
 type ActionChangeFilterType = { type: 'Change-Todolist-Filter', filter: FilterValuesType, id: string }
 
 export type ActionType = ActionRMTDType | ActionTDaddType | ActionChengeTDTitleType | ActionChangeFilterType
-
+const InitialState: Array<TodoListType> = []
 export const Todolist_Reducer =
-    (todoList: Array<TodoListType>, action: ActionType): Array<TodoListType> => {
+    (todoList: Array<TodoListType> = InitialState, action: ActionType): Array<TodoListType> => {
 
         switch (action.type) {
             case 'Remove-TodoList':

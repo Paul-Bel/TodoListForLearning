@@ -4,7 +4,7 @@ import {tasksReducer} from "./TasksReducer";
 
 // let TaskStateType = TaskStateType
 
-const startState: TaskStateType = {
+let startState: TaskStateType = {
     "todolistId1": [
         { id: "1", title: "CSS", isDone: false },
         { id: "2", title: "JS", isDone: true },
