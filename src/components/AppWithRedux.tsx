@@ -5,10 +5,10 @@ import {v1} from "uuid";
 import {AddInformations} from "./AddInformations";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
-import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC, Todolist_Reducer} from "./store/Todolist_Reducer";
-import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./store/TasksReducer";
+import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC} from "./store/Todolist_Reducer";
+import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./store/TasksReducer";
 import {useDispatch, useSelector} from "react-redux";
-import {AppRootStateType, store} from "./store/store";
+import {AppRootStateType} from "./store/store";
 
 export type TaskType = {
     id: string
@@ -25,7 +25,8 @@ function AppWithRedux() {
     const todoListID_2 = v1()
 
     const todoList = useSelector<AppRootStateType, Array<TodoListType>>(state => state.todolists)
-
+    // const todoList = store.getState().todolists
+    // const tasks = store.getState().tasks
     // const [todoList, dispatchTodoList] = useReducer(Todolist_Reducer, [
     //     {id: todoListID_1, title: "What to learn", filter: 'all'},
     //     {id: todoListID_2, title: "What to by", filter: 'all'},
@@ -95,7 +96,6 @@ function AppWithRedux() {
     const addTodo = (title: string) => {
         let action = Add_TD_AC(title)
         dispatch(action)
-
         // const ID = v1()
         // const newTD: TodoListType = {id: ID, title: title, filter: 'all'}
         // setTodoList([...todoList, newTD])

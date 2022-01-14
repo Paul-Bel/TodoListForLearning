@@ -21,7 +21,6 @@ export const Todolist_Reducer =
                 return todoList.map(m => m.id === action.id ? {...m, title: action.title} : m)
             case 'Change-Todolist-Filter':
                 return todoList.map(m => m.id === action.id ? {...m, filter: action.filter} : m)
-
             default:
                 return todoList
         }
