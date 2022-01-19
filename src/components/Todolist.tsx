@@ -1,10 +1,9 @@
-import React, {ChangeEvent, useCallback} from 'react';
+import React, {useCallback} from 'react';
 import {FilterValuesType, TaskType} from "./App";
 import {AddInformations} from "./AddInformations";
 import {EditableSpan} from "./EditableSpan";
-import {Button, ButtonGroup, Checkbox, IconButton, ListItem} from "@material-ui/core";
-import s from './../Todolist.module.css'
-import {Delete, DeleteForeverTwoTone} from "@material-ui/icons";
+import {Button, IconButton} from "@material-ui/core";
+import {Delete} from "@material-ui/icons";
 import {Task} from "./Task";
 
 type PropsType = {
@@ -25,10 +24,10 @@ export const Todolist = React.memo((props: PropsType) => {
     console.log('TL')
     let tasksForTodolist = props.tasks;
     if (props.filter === "active") {
-        tasksForTodolist = tasksForTodolist.filter(t => t.isDone === false);
+        tasksForTodolist = tasksForTodolist.filter(t => !t.isDone);
     }
     if (props.filter === "completed") {
-        tasksForTodolist = tasksForTodolist.filter(t => t.isDone === true);
+        tasksForTodolist = tasksForTodolist.filter(t => t.isDone);
     }
 
 
