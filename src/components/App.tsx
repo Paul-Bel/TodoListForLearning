@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import '../App.css';
-import TodoList from "./Todolist";
 import {v1} from "uuid";
 import {AddInformations} from "./AddInformations";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
+import { Todolist } from './Todolist';
 
 export type TaskType = {
     id: string
@@ -93,19 +93,19 @@ function App() {
                     style={{padding: "20px"}}
                     // className={s.border}
                 >
-                    <TodoList
-                        id={m.id}
-                        title={m.title}
-                        tasks={tasksForRender}
-                        filter={m.filter}
-                        addTask={addTask}
-                        removeTask={removeTask}
-                        changeFilter={changeFilter}
-                        changeTaskStatus={changeTaskStatus}
-                        removeTotoList={removeTotoList}
-                        changeTaskTitle={changeTaskTitle}
-                        changeTitleTD={changeTitleTD}
-                    />
+                    {/*<Todolist*/}
+                    {/*    id={m.id}*/}
+                    {/*    title={m.title}*/}
+                    {/*    tasks={tasksForRender}*/}
+                    {/*    filter={m.filter}*/}
+                    {/*    addTask={addTask}*/}
+                    {/*    removeTask={removeTask}*/}
+                    {/*    changeFilter={changeFilter}*/}
+                    {/*    changeTaskStatus={changeTaskStatus}*/}
+                    {/*    removeTotoList={removeTotoList}*/}
+                    {/*    changeTaskTitle={changeTaskTitle}*/}
+                    {/*    changeTitleTD={changeTitleTD}*/}
+                    {/*/>*/}
                 </Paper>
             </Grid>
         )

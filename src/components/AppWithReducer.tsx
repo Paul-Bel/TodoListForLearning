@@ -1,12 +1,12 @@
 import React, {useReducer, useState} from 'react';
 import '../App.css';
-import TodoList from "./Todolist";
 import {v1} from "uuid";
 import {AddInformations} from "./AddInformations";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
 import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC, Todolist_Reducer} from "./store/Todolist_Reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./store/TasksReducer";
+import {Todolist} from "./Todolist";
 
 export type FilterValuesType = "all" | "active" | "completed"
 export type TodoListType = { id: string, title: string, filter: FilterValuesType }
@@ -37,7 +37,7 @@ function App() {
         // const filt = todoList.map(m => m.id === todoListID ? {...m, filter} : m)
         // setTodoList(filt)
     }
-    const changeTitleTD = (title: string, todoListID: string) => {
+    const changeTodolistTitle = (title: string, todoListID: string) => {
         dispatchTodoList(Chenge_TD_AC(title, todoListID))
         // const filt = todoList.map(m => m.id === todoListID ? {...m, title} : m)
         // setTodoList(filt)
@@ -60,7 +60,7 @@ function App() {
         // copy[todoListID] = [newTask, ...tasks[todoListID]]
         // setTasks(copy)
     }
-    const changeTaskStatus = (taskID: string, isDone: boolean, todoListID: string) => {
+    const changeStatus = (taskID: string, isDone: boolean, todoListID: string) => {
         // const copyTasks = {...tasks}
         // copyTasks[todoListID] = tasks[todoListID].map(m => m.id === taskID ? {...m, isDone} : m)
         // setTasks(copyTasks)
@@ -73,7 +73,7 @@ function App() {
         // copyTasks[todoListID] = tasks[todoListID].map(m => m.id === taskID ? {...m, title} : m)
         // setTasks(copyTasks)
     }
-    const removeTotoList = (todoListID: string) => {
+    const removeTodolist = (todoListID: string) => {
         let action = Remove_TD_AC(todoListID)
         dispatchTodoList(action)
         dispatchTasks(action)
@@ -107,18 +107,18 @@ function App() {
                     style={{padding: "20px"}}
                     // className={s.border}
                 >
-                    <TodoList
+                    <Todolist
                         id={m.id}
                         title={m.title}
                         tasks={tasksForRender}
-                        filter={m.filter}
-                        addTask={addTask}
                         removeTask={removeTask}
                         changeFilter={changeFilter}
-                        changeTaskStatus={changeTaskStatus}
-                        removeTotoList={removeTotoList}
+                        addTask={addTask}
+                        filter={m.filter}
+                        changeTaskStatus={changeStatus}
+                        removeTodolist={removeTodolist}
                         changeTaskTitle={changeTaskTitle}
-                        changeTitleTD={changeTitleTD}
+                        changeTodolistTitle={changeTodolistTitle}
                     />
                 </Paper>
             </Grid>
