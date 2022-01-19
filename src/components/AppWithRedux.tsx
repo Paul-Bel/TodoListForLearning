@@ -1,6 +1,5 @@
 import React, {useCallback} from 'react';
 import '../App.css';
-import TodoList from "./Todolist";
 import {AddInformations} from "./AddInformations";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
@@ -9,6 +8,7 @@ import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./store/store";
 import {v1} from "uuid";
+import Todolist from "./Todolist";
 
 export type TaskType = {
     id: string
@@ -99,7 +99,7 @@ function AppWithRedux() {
 
                             return <Grid item key={tl.id}>
                                 <Paper style={{padding: "10px"}}>
-                                    <TodoList
+                                    <Todolist
                                         id={tl.id}
                                         title={tl.title}
                                         tasks={tasksForTodolist}

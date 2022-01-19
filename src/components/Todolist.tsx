@@ -15,9 +15,9 @@ type PropsType = {
     addTask: (title: string, todoListID: string) => void
     filter: FilterValuesType
     changeTaskStatus: (taskID: string, isDone: boolean, todoListID: string) => void
-    removeTotoList: (todoListID: string) => void
+    removeTodolist: (todoListID: string) => void
     changeTaskTitle: (taskID: string, title: string, todoListID: string) => void
-    changeTitleTD: (title: string, todoListID: string) => void
+    changeTodolistTitle: (title: string, todoListID: string) => void
 }
 
 function TodoList(props: PropsType) {
@@ -65,7 +65,7 @@ function TodoList(props: PropsType) {
         )
     })
     const changeTDTitle = (value: string) => {
-        props.changeTitleTD(value, props.id)
+        props.changeTodolistTitle(value, props.id)
         console.log(value)
     }
     return (
@@ -74,7 +74,7 @@ function TodoList(props: PropsType) {
             <h3>
                 <IconButton
                     color={'primary'}
-                    onClick={() => props.removeTotoList(props.id)}
+                    onClick={() => props.removeTodolist(props.id)}
                 >
                     <Delete/>
                 </IconButton>
