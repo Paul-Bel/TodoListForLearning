@@ -8,14 +8,8 @@ import {Menu} from "@material-ui/icons";
 import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC, Todolist_Reducer} from "./store/Todolist_Reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC, tasksReducer} from "./store/TasksReducer";
 
-export type TaskType = {
-    id: string
-    title: string
-    isDone: boolean
-}
 export type FilterValuesType = "all" | "active" | "completed"
 export type TodoListType = { id: string, title: string, filter: FilterValuesType }
-export type TaskStateType = { [key: string]: TaskType[] }
 
 function App() {
     const todoListID_1 = v1()
