@@ -8,7 +8,7 @@ import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./store/store";
 import {v1} from "uuid";
-import Todolist from "./Todolist";
+import {Todolist} from "./Todolist";
 
 export type TaskType = {
     id: string
