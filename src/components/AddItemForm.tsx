@@ -6,7 +6,7 @@ type AddInformationsPropsType = {
     addItem: (value: string) => void
 }
 
-export const AddInformations = (props: AddInformationsPropsType) => {
+export const AddItemForm = (props: AddInformationsPropsType) => {
 
     const [title, setTitle] = useState<string>("")
     const [error, setError] = useState<boolean>(false)

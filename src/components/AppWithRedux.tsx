@@ -1,13 +1,12 @@
 import React, {useCallback} from 'react';
 import '../App.css';
-import {AddInformations} from "./AddInformations";
+import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
 import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC} from "./store/Todolist_Reducer";
 import {addTaskAC, changeTaskStatusAC, changeTaskTitleAC, removeTaskAC} from "./store/TasksReducer";
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStateType} from "./store/store";
-import {v1} from "uuid";
 import {Todolist} from "./Todolist";
 
 export type TaskType = {
@@ -20,9 +19,6 @@ export type TodoListType = { id: string, title: string, filter: FilterValuesType
 export type TaskStateType = { [key: string]: TaskType[] }
 
 function AppWithRedux() {
-    let todolistId1 = v1();
-    let todolistId2 = v1();
-
     const todolists = useSelector<AppRootStateType, Array<TodoListType>>(state => state.todolists)
     const tasks = useSelector<AppRootStateType, TaskStateType>(state => state.tasks)
     const dispatch = useDispatch();
@@ -82,7 +78,7 @@ function AppWithRedux() {
             </AppBar>
             <Container fixed>
                 <Grid container style={{padding: "20px"}}>
-                    <AddInformations addItem={addTodolist}/>
+                    <AddItemForm addItem={addTodolist}/>
                 </Grid>
                 <Grid container spacing={3}>
                     {

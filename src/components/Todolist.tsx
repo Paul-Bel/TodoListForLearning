@@ -1,6 +1,6 @@
 import React, {useCallback} from 'react';
 import {FilterValuesType, TaskType} from "./App";
-import {AddInformations} from "./AddInformations";
+import {AddItemForm} from "./AddItemForm";
 import {EditableSpan} from "./EditableSpan";
 import {Button, IconButton} from "@material-ui/core";
 import {Delete} from "@material-ui/icons";
@@ -21,7 +21,6 @@ type PropsType = {
 }
 
 export const Todolist = React.memo((props: PropsType) => {
-    console.log('TL')
     let tasksForTodolist = props.tasks;
     if (props.filter === "active") {
         tasksForTodolist = tasksForTodolist.filter(t => !t.isDone);
@@ -63,7 +62,7 @@ export const Todolist = React.memo((props: PropsType) => {
                 <Delete />
             </IconButton>
         </h3>
-        <AddInformations addItem={addTask}/>
+        <AddItemForm addItem={addTask}/>
         <div>
             {tasksForTodolist.map(t => {
                 return <Task

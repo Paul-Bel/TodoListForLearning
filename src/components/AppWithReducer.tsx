@@ -1,7 +1,7 @@
 import React, {useReducer, useState} from 'react';
 import '../App.css';
 import {v1} from "uuid";
-import {AddInformations} from "./AddInformations";
+import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
 import {Add_TD_AC, Chenge_TD_AC, Filter_TD_AC, Remove_TD_AC, Todolist_Reducer} from "./store/Todolist_Reducer";
@@ -150,7 +150,7 @@ function App() {
                     style={{padding: '20px'}}
                 >
 
-                    <AddInformations addItem={addTodo}/>
+                    <AddItemForm addItem={addTodo}/>
                 </Grid>
 
                 <Grid

@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import '../App.css';
 import {v1} from "uuid";
-import {AddInformations} from "./AddInformations";
+import {AddItemForm} from "./AddItemForm";
 import {AppBar, Button, Container, Grid, IconButton, Paper, Toolbar, Typography} from "@material-ui/core";
 import {Menu} from "@material-ui/icons";
 import { Todolist } from './Todolist';
@@ -136,7 +136,7 @@ function App() {
                     style={{padding: '20px'}}
                 >
 
-                    <AddInformations addItem={addTodo}/>
+                    <AddItemForm addItem={addTodo}/>
                 </Grid>
 
                 <Grid
