@@ -44,7 +44,7 @@ export const AddItemForm = (props: AddInformationsPropsType) => {
                 helperText={error && "Title is required"}
             />
             <IconButton onClick={addItem}>
-          <Queue/>
+          <Queue/> +
             </IconButton>
         </div>
     )

@@ -2,7 +2,7 @@ import React from 'react';
 import {ComponentStory, ComponentMeta} from '@storybook/react';
 import {action} from "@storybook/addon-actions";
 import {Task} from "../components/Task";
-import {TaskType} from "../components/App";
+
 
 // More on default export: https://storybook.js.org/docs/react/writing-stories/introduction#default-export
 export default {
@@ -12,12 +12,15 @@ export default {
     argTypes: {
         backgroundColor: {control: 'color'},
     },
+    arg: {
+        removeTask: action('Task is delete'),
+        changeTaskStatus: action('Status task is change'),
+        changeTaskTitle: action('Title is change'),
+    }
 } as ComponentMeta<typeof Task>;
 
 const baseArg = {
-    removeTask: action('Task is delete'),
-    changeTaskStatus: action('Status task is change'),
-    changeTaskTitle: action('Title is change'),
+
 }
 // More on component templates: https://storybook.js.org/docs/react/writing-stories/introduction#using-args
 const Template: ComponentStory<typeof Task> = (args) => <Task {...args} />;
@@ -27,12 +30,10 @@ export const TaskIsDoneStory = Template.bind({});
 TaskIsDoneStory.args = {
     id: '1',
     tasks: {id: '44', title: 'React/Redux', isDone: true},
-    ...baseArg,
 };
 export const TaskIsNotDoneStory = Template.bind({});
 // More on args: https://storybook.js.org/docs/react/writing-stories/args
 TaskIsNotDoneStory.args = {
     id: '2',
     tasks: {id: '45', title: 'HTML/CSS', isDone: false},
-    ...baseArg,
 };
