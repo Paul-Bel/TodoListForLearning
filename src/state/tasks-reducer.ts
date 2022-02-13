@@ -184,5 +184,12 @@ export const updateTaskTC = (todolistId: string, taskId: string, change: Partial
     todolistsAPI.updateTask(todolistId, taskId, {...task, ...change}).then(res => {
         dispatch(changeTaskAC({...task, ...change} as TaskType))
     })
-    }
+}
+// export const updateTaskStatusTC = (todolistId: string, taskId: string, change: Partial<TaskType>) => (
+//     dispatch: Dispatch, getState:() => AppRootStateType ) => {
+//     const task = getState().tasks[todolistId].find(t => t.id === taskId) || {}
+//     todolistsAPI.updateTask(todolistId, taskId, {...task, ...change}).then(res => {
+//         dispatch(changeTaskAC({...task, ...change} as TaskType))
+//     })
+// }
 
