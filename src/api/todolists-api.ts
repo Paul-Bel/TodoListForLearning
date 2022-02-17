@@ -7,6 +7,7 @@ const instance = axios.create({
         'API-KEY': '3c089002-10aa-48c7-80c6-fa863be7bb86'
     }
 })
+
 // api
 export const todolistsAPI = {
     getTodolists() {
@@ -25,13 +26,12 @@ export const todolistsAPI = {
         return instance.get<GetTasksResponse>(`todo-lists/${todolistId}/tasks`);
     },
     deleteTask(todolistId: string, taskId: string) {
-
         return instance.delete<ResponseType>(`todo-lists/${todolistId}/tasks/${taskId}`);
     },
     createTask(todolistId: string, title: string) {
         return instance.post<{ title: string }, AxiosResponse<ResponseType<{ item: TaskType }>>>(`todo-lists/${todolistId}/tasks`, {title});
     },
-    updateTask(todolistId: string, taskId: string, model: Partial<TaskType>) {
+    updateTask(todolistId: string, taskId: string, model: UpdateTaskModelType) {
         return instance.put<UpdateTaskModelType, AxiosResponse<ResponseType<{ item: TaskType }>>>(`todo-lists/${todolistId}/tasks/${taskId}`, model);
     }
 }
