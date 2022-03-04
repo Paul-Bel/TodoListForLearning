@@ -1,30 +1,29 @@
 import React from 'react'
 import './App.css'
-import {TodolistsList} from '../features/TodolistsList/TodolistsList'
-
-// You can learn about the difference by reading this guide on minimizing bundle size.
-// https://mui.com/guides/minimizing-bundle-size/
-// import { AppBar, Button, Container, IconButton, Toolbar, Typography } from '@mui/material';
+import { TodolistsList } from '../features/TodolistsList/TodolistsList'
+import { useSelector } from 'react-redux'
+import { AppRootStateType } from './store'
+import { RequestStatusType } from './app-reducer'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
-import {Menu} from '@mui/icons-material';
-import {useSelector} from "react-redux";
-import {AppRootStateType} from "./store";
-import {RequestStatusType} from "./app-reducer";
-import LinearProgress from '@mui/material/LinearProgress/LinearProgress';
+import LinearProgress from '@mui/material/LinearProgress';
+import { Menu } from '@mui/icons-material';
+import {Login} from "../features/login/Login";
 import {ErrorSnackbar} from "../components/ErrorSnackBar/ErrorSnackBar";
+import {Routes, Route, BrowserRouter} from 'react-router-dom'
 
+type PropsType = {
+    demo?: boolean
+}
 
-function App() {
-    const status = useSelector<AppRootStateType, RequestStatusType>(s => s.app.status)
-    const error = useSelector<AppRootStateType,null|string>(s => s.app.error)
-    return (
-        <div className="App">
-            {error && <ErrorSnackbar/>}
+function App({demo = false}: PropsType) {
+    const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
+    return <div className="App">
+            <ErrorSnackbar/>
             <AppBar position="static">
                 <Toolbar>
                     <IconButton edge="start" color="inherit" aria-label="menu">
@@ -33,19 +32,20 @@ function App() {
                     <Typography variant="h6">
                         News
                     </Typography>
-
                     <Button color="inherit">Login</Button>
                 </Toolbar>
+                {status === 'loading' && <LinearProgress/>}
             </AppBar>
+        {/*<Container fixed>*/}
+        {/*<Routes>*/}
+        {/*        <Route path="/" element={<TodolistsList demo={demo}/>}/>*/}
+        {/*        <Route path="/login" element={<Login/>} />*/}
+                <TodolistsList demo={demo}/>
+        {/*</Routes>*/}
+        {/*</Container>*/}
 
-            { status === 'loading' && <LinearProgress color="secondary"/> }
+    </div>
 
-
-            <Container fixed>
-                <TodolistsList/>
-            </Container>
-        </div>
-    )
 }
 
 export default App

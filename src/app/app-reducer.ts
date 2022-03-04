@@ -1,25 +1,33 @@
-export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
-
-const initialState = {
-    status: 'loading' as RequestStatusType,
-    error: null as null | string,
+const initialState: InitialStateType = {
+    status: 'idle',
+    error: null
 }
 
-type InitialStateType = typeof initialState
-
-export const appReducer = (state: InitialStateType = initialState, action: ActionAppSetType): InitialStateType => {
+export const appReducer = (state: InitialStateType = initialState, action: ActionsType): InitialStateType => {
     switch (action.type) {
         case 'APP/SET-STATUS':
             return {...state, status: action.status}
         case 'APP/SET-ERROR':
             return {...state, error: action.error}
         default:
-            return state
+            return {...state}
     }
 }
 
-export type ActionAppSetType = ActionAppSetDateType | ActionAppSetErrorType
-export type ActionAppSetDateType = {type: 'APP/SET-STATUS', status: RequestStatusType}
-export type ActionAppSetErrorType = {type: 'APP/SET-ERROR', error: string|null}
-export const setAppStatusAC = (status: RequestStatusType): ActionAppSetDateType => ({type: 'APP/SET-STATUS', status})
-export const setAppErrorAC = (error: string|null): ActionAppSetErrorType => ({type: 'APP/SET-ERROR', error})
+export type RequestStatusType = 'idle' | 'loading' | 'succeeded' | 'failed'
+export type InitialStateType = {
+    // происходит ли сейчас взаимодействие с сервером
+    status: RequestStatusType
+    // если ошибка какая-то глобальная произойдёт - мы запишем текст ошибки сюда
+    error: string | null
+}
+
+export const setAppErrorAC = (error: string | null) => ({type: 'APP/SET-ERROR', error} as const)
+export const setAppStatusAC = (status: RequestStatusType) => ({type: 'APP/SET-STATUS', status} as const)
+
+export type SetAppErrorActionType = ReturnType<typeof setAppErrorAC>
+export type SetAppStatusActionType = ReturnType<typeof setAppStatusAC>
+
+type ActionsType =
+    | SetAppErrorActionType
+    | SetAppStatusActionType
