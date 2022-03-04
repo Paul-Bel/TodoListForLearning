@@ -1,9 +1,9 @@
 import React from 'react'
 import './App.css'
-import { TodolistsList } from '../features/TodolistsList/TodolistsList'
-import { useSelector } from 'react-redux'
-import { AppRootStateType } from './store'
-import { RequestStatusType } from './app-reducer'
+import {TodolistsList} from '../features/TodolistsList/TodolistsList'
+import {useSelector} from 'react-redux'
+import {AppRootStateType} from './store'
+import {RequestStatusType} from './app-reducer'
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
@@ -11,10 +11,11 @@ import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import Container from '@mui/material/Container';
 import LinearProgress from '@mui/material/LinearProgress';
-import { Menu } from '@mui/icons-material';
+import {Menu} from '@mui/icons-material';
 import {Login} from "../features/login/Login";
 import {ErrorSnackbar} from "../components/ErrorSnackBar/ErrorSnackBar";
-import {Routes, Route, BrowserRouter} from 'react-router-dom'
+import {Routes, Route, Navigate} from 'react-router-dom'
+import { NotFound } from '../components/NotFound'
 
 type PropsType = {
     demo?: boolean
@@ -23,26 +24,28 @@ type PropsType = {
 function App({demo = false}: PropsType) {
     const status = useSelector<AppRootStateType, RequestStatusType>((state) => state.app.status)
     return <div className="App">
-            <ErrorSnackbar/>
-            <AppBar position="static">
-                <Toolbar>
-                    <IconButton edge="start" color="inherit" aria-label="menu">
-                        <Menu/>
-                    </IconButton>
-                    <Typography variant="h6">
-                        News
-                    </Typography>
-                    <Button color="inherit">Login</Button>
-                </Toolbar>
-                {status === 'loading' && <LinearProgress/>}
-            </AppBar>
-        {/*<Container fixed>*/}
-        {/*<Routes>*/}
-        {/*        <Route path="/" element={<TodolistsList demo={demo}/>}/>*/}
-        {/*        <Route path="/login" element={<Login/>} />*/}
-                <TodolistsList demo={demo}/>
-        {/*</Routes>*/}
-        {/*</Container>*/}
+        <ErrorSnackbar/>
+        <AppBar position="static">
+            <Toolbar>
+                <IconButton edge="start" color="inherit" aria-label="menu">
+                    <Menu/>
+                </IconButton>
+                <Typography variant="h6">
+                    News
+                </Typography>
+                <Button color="inherit">Login</Button>
+            </Toolbar>
+            {status === 'loading' && <LinearProgress/>}
+        </AppBar>
+        <Container fixed>
+            <Routes>
+                <Route path="/" element={<TodolistsList demo={demo}/>}/>
+                <Route path="/login" element={<Login/>}/>
+                    <Route path="/404" element={<NotFound/>}/>
+                <Route path="*" element={<Navigate to="/404"/>}/>
+                    {/*<TodolistsList demo={demo}/>*/}
+            </Routes>
+        </Container>
 
     </div>
 

@@ -134,7 +134,7 @@ export type UpdateDomainTaskModelType = {
 export type TasksStateType = {
     [key: string]: Array<TaskType>
 }
-type ActionsType =
+export type ActionsType =
     | ReturnType<typeof removeTaskAC>
     | ReturnType<typeof addTaskAC>
     | ReturnType<typeof updateTaskAC>
