@@ -14,7 +14,7 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {Menu} from '@mui/icons-material';
 import {Login} from "../features/login/Login";
 import {ErrorSnackbar} from "../components/ErrorSnackBar/ErrorSnackBar";
-import {Navigate, Route, Routes} from 'react-router-dom'
+import {HashRouter, Navigate, Route, Routes} from 'react-router-dom'
 import {NotFound} from '../components/NotFound'
 
 type PropsType = {
