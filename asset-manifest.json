@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/TodoListForLearning/static/css/main.48934d97.chunk.css",
-    "main.js": "/TodoListForLearning/static/js/main.136028b9.chunk.js",
-    "main.js.map": "/TodoListForLearning/static/js/main.136028b9.chunk.js.map",
+    "main.css": "/TodoListForLearning/static/css/main.2039c263.chunk.css",
+    "main.js": "/TodoListForLearning/static/js/main.9832b4ef.chunk.js",
+    "main.js.map": "/TodoListForLearning/static/js/main.9832b4ef.chunk.js.map",
     "runtime-main.js": "/TodoListForLearning/static/js/runtime-main.100dfe7d.js",
     "runtime-main.js.map": "/TodoListForLearning/static/js/runtime-main.100dfe7d.js.map",
-    "static/js/2.ec54bc61.chunk.js": "/TodoListForLearning/static/js/2.ec54bc61.chunk.js",
-    "static/js/2.ec54bc61.chunk.js.map": "/TodoListForLearning/static/js/2.ec54bc61.chunk.js.map",
+    "static/js/2.5612e06d.chunk.js": "/TodoListForLearning/static/js/2.5612e06d.chunk.js",
+    "static/js/2.5612e06d.chunk.js.map": "/TodoListForLearning/static/js/2.5612e06d.chunk.js.map",
     "static/js/3.9fc2a780.chunk.js": "/TodoListForLearning/static/js/3.9fc2a780.chunk.js",
     "static/js/3.9fc2a780.chunk.js.map": "/TodoListForLearning/static/js/3.9fc2a780.chunk.js.map",
     "index.html": "/TodoListForLearning/index.html",
-    "static/css/main.48934d97.chunk.css.map": "/TodoListForLearning/static/css/main.48934d97.chunk.css.map",
-    "static/js/2.ec54bc61.chunk.js.LICENSE.txt": "/TodoListForLearning/static/js/2.ec54bc61.chunk.js.LICENSE.txt"
+    "static/css/main.2039c263.chunk.css.map": "/TodoListForLearning/static/css/main.2039c263.chunk.css.map",
+    "static/js/2.5612e06d.chunk.js.LICENSE.txt": "/TodoListForLearning/static/js/2.5612e06d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.100dfe7d.js",
-    "static/js/2.ec54bc61.chunk.js",
-    "static/css/main.48934d97.chunk.css",
-    "static/js/main.136028b9.chunk.js"
+    "static/js/2.5612e06d.chunk.js",
+    "static/css/main.2039c263.chunk.css",
+    "static/js/main.9832b4ef.chunk.js"
   ]
 }
