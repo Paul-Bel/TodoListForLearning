@@ -14,8 +14,8 @@ import LinearProgress from '@mui/material/LinearProgress';
 import {Menu} from '@mui/icons-material';
 import {Login} from "../features/login/Login";
 import {ErrorSnackbar} from "../components/ErrorSnackBar/ErrorSnackBar";
-import {Routes, Route, Navigate} from 'react-router-dom'
-import { NotFound } from '../components/NotFound'
+import {Navigate, Route, Routes} from 'react-router-dom'
+import {NotFound} from '../components/NotFound'
 
 type PropsType = {
     demo?: boolean
@@ -41,7 +41,7 @@ function App({demo = false}: PropsType) {
             <Routes>
                 <Route path="/" element={<TodolistsList demo={demo}/>}/>
                 <Route path="/login" element={<Login/>}/>
-                    {/*<Route path="/404" element={<NotFound/>}/>*/}
+                    <Route path="/404" element={<NotFound/>}/>
                 <Route path="*" element={<Navigate to="/404"/>}/>
                     {/*<TodolistsList demo={demo}/>*/}
             </Routes>
