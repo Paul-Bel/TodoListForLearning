@@ -46,7 +46,6 @@ function App({demo = false}: PropsType) {
                     {/*<TodolistsList demo={demo}/>*/}
             </Routes>
         </Container>
-
     </div>
 
 }
